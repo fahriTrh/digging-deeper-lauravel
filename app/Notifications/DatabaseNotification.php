@@ -12,13 +12,15 @@ class DatabaseNotification extends Notification
     use Queueable;
 
     public $user;
+    public $type;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($user)
+    public function __construct($user, $type = null)
     {
         $this->user = $user;
+        $this->type = $type;
     }
 
     /**
@@ -57,6 +59,6 @@ class DatabaseNotification extends Notification
 
     public function databaseType()
     {
-        return 'learn-db-notif';
+        return $this->type ?? 'learn-db-notif';
     }
 }

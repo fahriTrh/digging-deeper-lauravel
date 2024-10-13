@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SenderEmailController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ Route::get('/send-notif-database/{id}', [NotificationController::class, 'sendNot
 
 Route::get('/notify/unread/{id}', [NotificationController::class, 'notifyUnread'])->name('notify.unread');
 Route::get('/notify/readall/{id}', [NotificationController::class, 'notifyReadAll'])->name('notify.readAll');
+
+
+// learn query deeper
+Route::get('/users', [UserController::class, 'index']);

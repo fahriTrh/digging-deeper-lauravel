@@ -23,7 +23,7 @@ class NotificationController extends Controller
         $user = User::where('id', $id)->first();
         
         Notification::send($user, new DatabaseNotification($user));
-
+        
         return redirect()->route('notify.unread', ['id' => $user->id]);
     }
 
