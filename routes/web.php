@@ -23,5 +23,8 @@ Route::get('/notify/unread/{id}', [NotificationController::class, 'notifyUnread'
 Route::get('/notify/readall/{id}', [NotificationController::class, 'notifyReadAll'])->name('notify.readAll');
 
 
+// learn cache
+Route::get('/users/cache', [UserController::class, 'cache']);
+
 // learn query deeper
 Route::get('/users', [UserController::class, 'index']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,7 @@ class UserController extends Controller
 
         // dd($all_user);
 
+        // Hello World
 
         /**
          * try join()
@@ -41,5 +43,23 @@ class UserController extends Controller
                     ->get();
 
         dd($users);
+    }
+
+    public function cache()
+    {
+        // $users = Cache::get('users', function() {
+        //     return DB::table('users')->get();
+        // });
+
+        $second = 10;
+        $users = Cache::remember('users',$second, function() {
+            return DB::table('users')->get();
+        });
+
+        // dd($users);
+        // dd(Cache::has('users'));
+        // dd(DB::table('users')->get());
+
+        return view('cache', compact('users'));
     }
 }
